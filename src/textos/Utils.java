@@ -174,7 +174,7 @@ public class Utils {
         for (int i = 0; i < texto.length(); i++) {
             char c = texto.charAt(i);
 
-            if (c != ' ' && c != ',' && c != '.') {
+            if (c != ' ') {
                 if (!dentroPalabra) {
                     contador++;
                     dentroPalabra = true;
