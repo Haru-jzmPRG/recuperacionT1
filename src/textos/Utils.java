@@ -12,20 +12,17 @@ public class Utils {
     public static int resumenTexto(String texto) {
 
         String[] palabras = textoAArray(texto);
-        String[] palabrasSinRepetir = new String[palabras.length];
-        int contador = 0;
-        int i = 0;
-        int j = 0;
-        for (i = 0; i < palabras.length; i++) {
-            if (palabras[i].equals(palabras[j])) {
-                contador++;
-            } else {
-                palabrasSinRepetir[i] = palabras[i];
-                j++;
+        int[] contador = new int[palabras.length];
+        for (int i = 0; i < palabras.length; i++) {
+            for (int j = 0; j < palabras.length; j++) {
+                if (palabras[i].equals(palabras[j])) {
+                    contador[i]++;
+                    
+                }
             }            
+            System.out.printf("%s (%d)\n", palabras[i], contador[i]);
         }
 
-        System.out.printf("%s (%d)\n", palabrasSinRepetir[i], contador);
         return 0;
     }
         
