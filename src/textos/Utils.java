@@ -11,22 +11,26 @@ public class Utils {
      */
     public static int resumenTexto(String texto) {
 
-        String[] palabras = textoAArray(texto);
-        int[] contador = new int[palabras.length];
+        String[] palabras = textos.Utils.textoAArray(texto);
+        String[] copiaPalabras = copiaArray(palabras);
+        int j = 0;
+        int palabra = 0;
+        String[] palabrasYaEstaban = new String[palabra];
+        int[] contador = new int[palabra];
+        
+
         for (int i = 0; i < palabras.length; i++) {
-            for (int j = 0; j < palabras.length; j++) {
-                if (palabras[i].equals(palabras[j])) {
-                    contador[i]++;
-                    
-                }
-            }            
-            System.out.printf("%s (%d)\n", palabras[i], contador[i]);
+            if (palabras[i].equals(copiaPalabras[j])) {
+                palabrasYaEstaban[palabra] = palabras[i];
+                contador[palabra]++;
+                palabra++;
+            }else {
+                j++;
+            }
         }
 
         return 0;
     }
-        
-    
 
     /**
      * Devolver el texto con las palabras desordenadas
@@ -185,4 +189,15 @@ public class Utils {
         return contador;
     }
 
+    /**Copia Array de palabras
+     * @param palabras Palabras a copiar
+     * @return Array de palabras copiadas
+     */
+    public static String[] copiaArray(String[] palabras) {
+        String[] copia = new String[palabras.length];
+        for (int i = 0; i < palabras.length; i++) {
+            copia[i] = palabras[i];
+        }
+        return copia;
+    }
 }
