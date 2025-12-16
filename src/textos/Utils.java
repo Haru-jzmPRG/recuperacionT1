@@ -6,27 +6,49 @@ public class Utils {
      * @param texto Texto a separar
      * @return Array de Strings con las palabras
      */
-    public static String[] separarPalabras(String texto){
-        String[] palabra = new String[texto.length()];
-        int palabras = 0;
-        int i = 0;
-        int j = 0;
+    public static String[] separarPalabras(String texto) {
 
-        while(i < texto.length()){
-            if (texto.charAt(j) != ' '){
-                palabra[i] = palabra[i] + texto.charAt(j);
-                j++;
-            }else{
-                palabras++;
-                i++;
+    int contador = 0;
+    boolean dentroPalabra = false;
+
+    for (int i = 0; i < texto.length(); i++) {
+        char c = texto.charAt(i);
+
+        if (c != ' ' && c != ',' && c != '.') {
+            if (!dentroPalabra) {
+                contador++;
+                dentroPalabra = true;
             }
+        } else {
+            dentroPalabra = false;
         }
-
-
-        
-        return palabra;
     }
 
+    String[] palabras = new String[contador];
+
+    int indice = 0;
+    String palabra = "";
+
+    for (int i = 0; i < texto.length(); i++) {
+        char c = texto.charAt(i);
+
+        if (c != ' ' && c != ',' && c != '.') {
+            palabra += c;
+        } else {
+            if (!palabra.equals("")) {
+                palabras[indice] = palabra;
+                indice++;
+                palabra = "";
+            }
+        }
+    }
+
+    if (!palabra.equals("")) {
+        palabras[indice] = palabra;
+    }
+
+    return palabras;
+}
     /** Cuenta las palabras del texto
      * @param texto Texto a contar
      * @return Número de palabras
