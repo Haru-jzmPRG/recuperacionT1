@@ -3,7 +3,8 @@ package textos;
 public class Utils {
 
     /**
-     * Cuenta cuantas veces aparecen las palabras en el texto, listado de palabras que forman el texto y cuantas veces aparecen cada una de ellas
+     * Cuenta cuantas veces aparecen las palabras en el texto, listado de palabras
+     * que forman el texto y cuantas veces aparecen cada una de ellas
      * 
      * @param texto    Texto en el que buscar las palabras
      * @param palabras Palabras a buscar
@@ -11,24 +12,20 @@ public class Utils {
      */
     public static int resumenTexto(String texto) {
 
-        String[] palabras = textos.Utils.textoAArray(texto);
-        String[] copiaPalabras = copiaArray(palabras);
-        int j = 0;
-        int palabra = 0;
-        String[] palabrasYaEstaban = new String[palabra];
-        int[] contador = new int[palabra];
-        
-
+        String[] palabras = textoAArray(texto);
+        String[] palabrasSinRepetir = new String[palabras.length];
+        int[] contador = new int[palabras.length];
         for (int i = 0; i < palabras.length; i++) {
-            if (palabras[i].equals(copiaPalabras[j])) {
-                palabrasYaEstaban[palabra] = palabras[i];
-                contador[palabra]++;
-                palabra++;
-            }else {
-                j++;
+            for (int j = 0; j < palabras.length; j++) {
+                if (palabras[i].equals(palabras[j])) {
+                    contador[i]++;
+                }
             }
         }
-
+        for (int i = 0; i < palabras.length; i++) {
+            palabrasSinRepetir[contador[i]] = palabras[i];
+            System.out.printf("%s (%d)\n", palabras[i], contador[i]);
+        }
         return 0;
     }
 
@@ -189,7 +186,9 @@ public class Utils {
         return contador;
     }
 
-    /**Copia Array de palabras
+    /**
+     * Copia Array de palabras
+     * 
      * @param palabras Palabras a copiar
      * @return Array de palabras copiadas
      */
