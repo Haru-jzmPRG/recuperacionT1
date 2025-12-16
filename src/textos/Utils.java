@@ -3,7 +3,7 @@ package textos;
 public class Utils {
 
     /**
-     * Cuenta cuantas veces aparecen las palabras en el texto
+     * Cuenta cuantas veces aparecen las palabras en el texto, listado de palabras que forman el texto y cuantas veces aparecen cada una de ellas
      * 
      * @param texto    Texto en el que buscar las palabras
      * @param palabras Palabras a buscar
